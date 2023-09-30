@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     const options = {
-     strings: ['carente em busac e sexo', 'calvo', 'testanto coisas'],
+     strings: ['a software developer.', 'an artist.', 'a rust enthusiast.', 'a bass player.'],
      typeSpeed: 25,
      backSpeed: 25,
      showCursor: true,

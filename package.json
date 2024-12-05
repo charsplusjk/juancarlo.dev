@@ -1,0 +1,28 @@
+{
+  "name": "juancarlo.dev",
+  "version": "1.0.0",
+  "description": "Juan's website",
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "prettier": "prettier -write .",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "Juan Carlo",
+  "license": "MIT",
+  "dependencies": {
+    "@chakra-ui/react": "^3.2.3",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "framer-motion": "^11.13.1",
+    "next": "^15.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^15.0.3",
+    "prettier": "^3.4.2"
+  }
+}

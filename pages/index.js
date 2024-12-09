@@ -23,7 +23,7 @@ const Page = () => {
                 <Heading as="h3" variant="section-title">
                     Work
                 </Heading>
-                <Paragraph>Paragraph</Paragraph>
+                <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla rutrum libero vel commodo. Vivamus sit amet maximus leo. Donec porta facilisis velit nec ullamcorper. Proin non ornare metus. Donec efficitur a ex at sagittis. Etiam at mi elementum erat suscipit cursus. Quisque vitae nibh ligula. Donec dolor sem, lobortis a dictum vel, sodales non enim. Ut eu scelerisque dolor. Donec ac ullamcorper elit. Nunc egestas rhoncus urna a imperdiet. </Paragraph>
             </Section>
         </Container>
     )

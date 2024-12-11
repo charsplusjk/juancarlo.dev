@@ -29,7 +29,7 @@ const Page = () => {
                 <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla rutrum libero vel commodo. Vivamus sit amet maximus leo. Donec porta facilisis velit nec ullamcorper. Proin non ornare metus. Donec efficitur a ex at sagittis. Etiam at mi elementum erat suscipit cursus. Quisque vitae nibh ligula. Donec dolor sem, lobortis a dictum vel, sodales non enim. Ut eu scelerisque dolor. Donec ac ullamcorper elit. Nunc egestas rhoncus urna a imperdiet. </Paragraph>
                 <Box align="center" my={4}>
                     <NextLink href="/works">
-                        <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
+                        <Button rightIcon={<ChevronRightIcon />} colorScheme="green">
                             My portfolio
                         </Button>
                     </NextLink>

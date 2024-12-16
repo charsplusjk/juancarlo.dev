@@ -45,8 +45,8 @@ const Navbar = props => {
                     flexGrow={1}
                     mt={{ base: 4, md: 0 }}
                 >
-                    <a href="/works">Works</a>
-                    <a href="/posts">Posts</a>
+                    <NextLink href="/works">Works</NextLink>
+                    <NextLink href="/posts">Posts</NextLink>
                 </Stack>
                 <Box flex={1} align="right">
                     <ThemeToggleButton />
@@ -59,9 +59,9 @@ const Navbar = props => {
                                 aria-label="Options"
                             />
                             <MenuList>
-                                <a href="/">About</a>
-                                <a href="/">Work</a>
-                                <a href="/">Posts</a>
+                                <NextLink href="/">About</NextLink>
+                                <NextLink href="/works">Works</NextLink>
+                                <NextLink href="/posts">Posts</NextLink>
                             </MenuList>
                         </Menu>
                     </Box>

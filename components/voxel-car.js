@@ -131,6 +131,7 @@ const VoxelCar = () => {
             className="voxel-car"
             m="auto"
             at={['-20px', '-60px', '-120px']}
+            mt={['-40px', '-140px', '-200px']}
             mb={['-40px', '-140px', '-200px']}
             w={[280, 480, 640]}
             h={[280, 480, 640]}
@@ -146,7 +147,6 @@ const VoxelCar = () => {
                     mt="calc(0px - var(--spinner-size))"
                 />
             )}
-            Car
         </Box>
     )
 }

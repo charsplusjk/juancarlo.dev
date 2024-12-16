@@ -38,80 +38,85 @@ const VoxelCar = () => {
 
     /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
-        const { current: container } = refContainer
+        console.log("Initializing 3D renderer...");
+        const { current: container } = refContainer;
+    
         if (container && !renderer) {
-            const scW = container.clientWidth
-            const scH = container.clientHeight
-
-            const renderer = new THREE.WebGLRenderer({
+            const scW = container.clientWidth;
+            const scH = container.clientHeight;
+    
+            const rendererInstance = new THREE.WebGLRenderer({
                 antialias: true,
                 alpha: true
-            })
-            renderer.setPixelRatio(window.devicePixelRatio)
-            renderer.setSize(scW, scH)
-            renderer.outputEncoding = THREE.sRGBEncoding
-            container.appendChild(renderer.domElement)
-            setRenderer(renderer)
-
-            // 640 -> 240
-            // 8 -> 6
-            const scale = scH * 0.005 + 4.8
-            const camera = new THREE.OrthographicCamera(
+            });
+            rendererInstance.setPixelRatio(window.devicePixelRatio);
+            rendererInstance.setSize(scW, scH);
+            rendererInstance.outputEncoding = THREE.sRGBEncoding;
+            container.appendChild(rendererInstance.domElement);
+            setRenderer(rendererInstance);
+    
+            const scale = scH * 0.005 + 4.8;
+            const cameraInstance = new THREE.OrthographicCamera(
                 -scale,
                 scale,
                 scale,
                 -scale,
                 0.01,
                 50000
-            )
-            camera.position.copy(initialCameraPosition)
-            camera.lookAt(target)
-            setCamera(camera)
-
-            const ambientLight = new THREE.AmbientLight(0xcccccc, 1)
-            scene.add(ambientLight)
-
-            const controls = new OrbitControls(camera, renderer.domElement)
-            controls.autoRotate = true
-            controls.target = target
-            setControls(controls)
-
+            );
+            cameraInstance.position.copy(initialCameraPosition);
+            cameraInstance.lookAt(target);
+            setCamera(cameraInstance);
+    
+            const ambientLight = new THREE.AmbientLight(0xcccccc, 1);
+            scene.add(ambientLight);
+    
+            const controlsInstance = new OrbitControls(cameraInstance, rendererInstance.domElement);
+            controlsInstance.autoRotate = true;
+            controlsInstance.target = target;
+            setControls(controlsInstance);
+    
             loadGLTFModel(scene, '/car.glb', {
                 receiveShadow: false,
                 castShadow: false
             }).then(() => {
-                animate()
-                setLoading(false)
-            })
-
-            let req = null
-            let frame = 0
+                animate();
+                setLoading(false);
+            });
+    
+            let req = null;
+            let frame = 0;
             const animate = () => {
-                req = requestAnimationFrame(animate)
-
-                frame = frame <= 100 ? frame + 1 : frame
-
+                req = requestAnimationFrame(animate);
+    
+                frame = frame <= 100 ? frame + 1 : frame;
+    
                 if (frame <= 100) {
-                    const p = initialCameraPosition
-                    const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
-
-                    camera.position.y = 10
-                    camera.position.x = p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
-                    camera.position.z = p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed)
-                    camera.lookAt(target)
+                    const p = initialCameraPosition;
+                    const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20;
+    
+                    cameraInstance.position.y = 10;
+                    cameraInstance.position.x = p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed);
+                    cameraInstance.position.z = p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed);
+                    cameraInstance.lookAt(target);
                 } else {
-                    controls.update()
+                    controlsInstance.update();
                 }
-
-                renderer.render(scene, camera)
-            }
-
+    
+                rendererInstance.render(scene, cameraInstance);
+            };
+    
             return () => {
-                cancelAnimationFrame(req)
-                renderer.dispose()
-            }
+                console.log("Cleaning up renderer...");
+                cancelAnimationFrame(req);
+                if (rendererInstance) {
+                    rendererInstance.dispose();
+                    const canvas = container.querySelector("canvas");
+                    if (canvas) container.removeChild(canvas);
+                }
+            };
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
         window.addEventListener('resize', handleWindowResize, false)

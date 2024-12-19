@@ -130,11 +130,10 @@ const VoxelCar = () => {
             ref={refContainer}
             className="voxel-car"
             m="auto"
-            at={['-20px', '-60px', '-120px']}
-            mt={['-40px', '-140px', '-200px']}
+            mt={['-20px', '-50px', '-100px']}
             mb={['-40px', '-140px', '-200px']}
             w={[280, 480, 640]}
-            h={[280, 480, 640]}
+            h={[200, 400, 600]}
             position="relative"
         >
             {loading && (
